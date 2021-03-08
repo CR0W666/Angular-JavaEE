@@ -12,7 +12,7 @@ export class CreateUserComponent implements OnInit {
 
   username = '';
   password = '';
-  gender = '';
+  accessLevel = '';
   user: User[] = [];
   url = '/api/users';
   baseUrl: string = 'http://localhost:8080/EducanetWebik/api/users';
@@ -26,8 +26,9 @@ export class CreateUserComponent implements OnInit {
     const body = {
       username: this.username,
       password: this.password,
-      gender: this.gender
-    }
+      accessLevel: this.accessLevel
+    };
+
     console.log(this.username);
     this.http.post(this.url, body, {observe: 'response'}).subscribe((data) => {
       console.log(data);

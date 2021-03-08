@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
       this.http.get(this.url + i.id).subscribe((data: User) => {
         this.users = data;
         console.log(this.users);
+        console.log(data);
       });
     });
   }

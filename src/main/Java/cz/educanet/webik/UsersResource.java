@@ -4,8 +4,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Path("users")
@@ -19,18 +17,33 @@ public class UsersResource {
 
 
     @GET
-    public Response getAllUserNames() {
-        return Response.ok(userManager.getAllUserNames()).build();
+    public Response getAllUsernames() {
+        return Response.ok(userManager.getAllUsernames()).build();
     }
 
+
+/*
+    @GET
+    @Path("{name}")
+    public Response getUserByName(@PathParam("name") String name) {
+        return  Response.ok(userManager.getUserByName(name)).build();
+    }
+*/
     @GET
     @Path("{id}")
-    public Response getUserName(@PathParam("id") int id) {
-        return  Response.ok(userManager.getUserName(id)).build();
+    public Response getUsername(@PathParam("id") int id) {
+        return  Response.ok(userManager.getUsername(id)).build();
     }
+
+    // @GET
+    // @Path("{id}")
+    // public Response getUserLevel(@PathParam("id") int id) {
+    //     return  Response.ok(userManager.getUserLevel(id)).build();
+    // }
 
     @POST
     public Response createUser(User user){
+        //System.out.println("USER: " + user.toString());
         if(!userManager.createUser(user))
             return Response.status(400).build();
 
