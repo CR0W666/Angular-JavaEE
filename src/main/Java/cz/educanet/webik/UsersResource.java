@@ -12,8 +12,6 @@ public class UsersResource {
 
     @Inject
     private UsersManager userManager;
-    //@Inject
-    //private LoggedManager loggedManager;
 
 
     @GET
@@ -22,13 +20,8 @@ public class UsersResource {
     }
 
 
-/*
-    @GET
-    @Path("{name}")
-    public Response getUserByName(@PathParam("name") String name) {
-        return  Response.ok(userManager.getUserByName(name)).build();
-    }
-*/
+
+
     @GET
     @Path("{id}")
     public Response getUsername(@PathParam("id") int id) {
@@ -43,7 +36,7 @@ public class UsersResource {
 
     @POST
     public Response createUser(User user){
-        //System.out.println("USER: " + user.toString());
+        
         if(!userManager.createUser(user))
             return Response.status(400).build();
 

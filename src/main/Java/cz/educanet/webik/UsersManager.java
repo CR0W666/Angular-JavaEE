@@ -1,10 +1,11 @@
 package cz.educanet.webik;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @ApplicationScoped
-public class UsersManager {
+public class UsersManager implements Serializable {
 
     private ArrayList<User> userList = new ArrayList<>();
 
