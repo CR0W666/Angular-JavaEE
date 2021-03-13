@@ -29,12 +29,8 @@ export class LoginComponent implements OnInit {
     };
 
     this.http.post(this.url, body, {withCredentials: true}).subscribe((data: User) => {
-      this.http.get("/api/auth", {withCredentials: true}).subscribe();
+      this.http.get(this.url, {withCredentials: true}).subscribe();
     });
-
-  }
-
-  checkPassword() {
 
   }
 
