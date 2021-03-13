@@ -16,14 +16,14 @@ class AuthManager implements Serializable {
 
         User tempUser = userManager.getUserByName(user.getUsername());
         if(tempUser != null && tempUser.getPassword().equals(user.getPassword())) {
+            System.out.println("USER SET");
             loggedUser = tempUser;
         }
 
     }
 
     public boolean userState() {
-        return loggedUser != null;
-    }
+        System.out.println("userstate: " + loggedUser.toString()); return loggedUser != null; }
 
 
     public User getLoggedUser() {

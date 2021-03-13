@@ -1,12 +1,14 @@
 package cz.educanet.webik;
 
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.Serializable;
 
 @Path("auth")
+@Produces(MediaType.APPLICATION_JSON)
 public class AuthResource {
 
     @Inject
@@ -15,11 +17,10 @@ public class AuthResource {
     @GET
     public Response getLoggedUser() {
 
-        if(authManager.userState())
-            return  Response.ok(authManager.getLoggedUser()).build();
+        if (authManager.userState())
+            return Response.ok(authManager.getLoggedUser()).build();
         else
             return Response.status(Response.Status.BAD_REQUEST).build();
-
 
     }
 
@@ -28,7 +29,7 @@ public class AuthResource {
         authManager.login(user);
 
         if (authManager.userState())
-            return Response.ok().build();
+            return Response.ok(authManager.getLoggedUser()).build();
         else
             return Response.status(Response.Status.BAD_REQUEST).build();
     }
