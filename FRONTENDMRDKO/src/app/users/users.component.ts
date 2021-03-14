@@ -9,19 +9,25 @@ import {Router} from '@angular/router';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  
+
   users: User[] = [];
   url = 'api/users/';
   baseUrl: string = 'http://localhost:8080/EducanetWebik/api/users';
+
+
 
   constructor(private http: HttpClient, private router: Router) {
     this.http.get(this.url).subscribe((data: User[]) => {
       this.users = data;
     });
   }
+
   delete(id: number) {
     this.http.delete(this.url + id).subscribe((data: User) => {
-      console.log(data);
+      for(let i = 0; i < this.users.length; i++) {
+        let user = this.users[i];
+        if(user.id == id) this.users.splice(this.users.indexOf(user), 1);
+      }
     });
   }
 

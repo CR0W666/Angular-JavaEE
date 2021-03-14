@@ -29,9 +29,9 @@ export class CreateUserComponent implements OnInit {
       accessLevel: this.accessLevel
     };
 
-    console.log(this.username);
+
     this.http.post(this.url, body, {observe: 'response'}).subscribe((data) => {
-      console.log(data);
+
       this.router.navigate(['/users']);
 
     });

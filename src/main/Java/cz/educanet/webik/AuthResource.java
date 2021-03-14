@@ -24,6 +24,17 @@ public class AuthResource {
 
     }
 
+    @DELETE
+    public Response logout() {
+        authManager.logout();
+
+        if (!authManager.userState())
+            return Response.ok("logged out").build();
+        else
+            return Response.status(Response.Status.BAD_REQUEST).build();
+
+    }
+
     @POST
     public Response login(User user) {
         authManager.login(user);

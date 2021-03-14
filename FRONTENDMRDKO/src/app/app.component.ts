@@ -12,8 +12,7 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit {
   title = 'JavaEE';
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) { }
 
   user: User;
   logState: boolean = false;
@@ -27,7 +26,20 @@ export class AppComponent implements OnInit {
       },
 
       () => {
-        console.log("kockapes");
+        console.log("kockapes kam se error, kam se vlez.");
+      }
+    );
+  }
+
+  logout() {
+    this.http.delete("/api/auth", {withCredentials: true}).subscribe(
+      (data) => {
+        this.user = null;
+        this.logState = false;
+      },
+
+      () => {
+        console.log("Neco se dojebkalo.");
       }
     );
   }

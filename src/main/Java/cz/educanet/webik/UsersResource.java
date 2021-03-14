@@ -38,7 +38,7 @@ public class UsersResource {
     public Response createUser(User user){
         
         if(!userManager.createUser(user))
-            return Response.status(400).build();
+            return Response.status(Response.Status.BAD_REQUEST).build();
 
         return Response.ok(user).build();
     }
@@ -47,7 +47,7 @@ public class UsersResource {
     @Path("{id}")
     public Response deleteUser(@PathParam("id") int id) {
         if(userManager.removeUserName(id)){
-            return Response.ok("User deleted").build(); 
+            return Response.ok(Response.Status.GONE).build();
         } else { 
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

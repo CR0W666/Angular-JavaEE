@@ -14,19 +14,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-  url = '/api/users';
-  baseUrl: string = 'http://localhost:8080/EducanetWebik/api/users';
-  testUsername: string = "test lol";
-  createUser() {
-    const body = {
-      name: this.testUsername
-    }
-    this.http.post(this.url, body, {observe: 'response'}).subscribe((data) => {
-      console.log(data);
-      
-
-
-    });
-  }
 
 }
